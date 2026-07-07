@@ -13,6 +13,14 @@ void	test_normal(void)
 	assert(result == 5);
 }
 
+void	test_empty(void)
+{
+	char	*str;
+
+	str = "";
+	assert(0 == ft_strlen(str));
+}
+
 int	main(void)
 {
 	test_normal();
