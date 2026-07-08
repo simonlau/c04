@@ -6,7 +6,7 @@
 /*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 15:41:27 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/08 15:41:28 by simon.lau        ###   ########.fr       */
+/*   Updated: 2026/07/08 20:59:32 by simon.lau        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,18 @@ char	*move_pass_spaces(char *str)
 
 int	ft_atoi(char *str)
 {
-	int				result;
-	char			*str_ptr;
-	int				num;
-	unsigned int	is_negative;
+	int		result;
+	char	*str_ptr;
+	int		sign;
 
 	result = 0;
+	sign = 1;
 	str_ptr = move_pass_spaces(str);
-	is_negative = FALSE;
 	while (*str_ptr == '+' || *str_ptr == '-')
 	{
 		if (*str_ptr == '-')
 		{
-			is_negative = !is_negative;
+			sign *= -1;
 		}
 		str_ptr++;
 	}
@@ -69,13 +68,8 @@ int	ft_atoi(char *str)
 		{
 			return (result);
 		}
-		num = *str_ptr - '0';
-		result = result * 10 + num;
+		result = result * 10 + (*str_ptr - '0');
 		str_ptr++;
 	}
-	if (is_negative)
-	{
-		result *= -1;
-	}
-	return (result);
+	return (result * sign);
 }
