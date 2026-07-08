@@ -6,7 +6,7 @@
 /*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:02:15 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/08 08:56:35 by simon.lau        ###   ########.fr       */
+/*   Updated: 2026/07/08 21:03:16 by simon.lau        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,11 @@ void	write_buffer_backwards(int *buffer, int count)
 }
 
 void	ft_putnbr(int nb)
-
 {
-	int div;
-	int mod;
-	int num_buffer[10];
-	int count;
+	int	div;
+	int	mod;
+	int	num_buffer[10];
+	int	count;
 
 	div = nb / 10;
 	mod = nb % 10;
