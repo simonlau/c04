@@ -6,7 +6,7 @@
 /*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:02:15 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/07 23:37:12 by simon.lau        ###   ########.fr       */
+/*   Updated: 2026/07/08 08:56:35 by simon.lau        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	write_digit(int digit)
 {
-	char	digits[] = "0123456789";
 	int		num;
+	char	*digits;
 
+	digits = "0123456789";
 	if (digit < 0 || digit > 9)
 	{
 		return ;
@@ -25,12 +26,21 @@ void	write_digit(int digit)
 	write(1, &num, 1);
 }
 
+void	write_buffer_backwards(int *buffer, int count)
+{
+	while (count > -1)
+	{
+		write_digit(buffer[count]);
+		count--;
+	}
+}
+
 void	ft_putnbr(int nb)
 
 {
 	int div;
 	int mod;
-	int num[10];
+	int num_buffer[10];
 	int count;
 
 	div = nb / 10;
@@ -44,15 +54,11 @@ void	ft_putnbr(int nb)
 	}
 	while (div != 0)
 	{
-		num[count] = mod;
+		num_buffer[count] = mod;
 		mod = div % 10;
 		div /= 10;
 		count++;
 	}
-	num[count] = mod;
-	while (count > -1)
-	{
-		write_digit(num[count]);
-		count--;
-	}
+	num_buffer[count] = mod;
+	write_buffer_backwards(num_buffer, count);
 }
