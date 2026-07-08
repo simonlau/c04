@@ -19,8 +19,17 @@ void	test_empty(void)
 	ft_putstr(str);
 }
 
+void	test_one_char(void)
+{
+	char	*str;
+
+	str = "?";
+	ft_putstr(str);
+}
+
 int	main(void)
 {
 	test_empty();
 	test_normal();
+	test_one_char();
 }
