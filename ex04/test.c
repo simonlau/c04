@@ -16,8 +16,15 @@ void	test_binary(void)
 	ft_putnbr_base(3, "01");
 }
 
+void	test_binary_neg(void)
+{
+	ft_putnbr_base(-2, "01");
+	ft_putnbr_base(-3, "01");
+}
+
 int	main(void)
 {
 	// test_invalid_base();
-	test_binary();
+	// test_binary();
+	test_binary_neg();
 }

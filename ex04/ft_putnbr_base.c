@@ -6,7 +6,7 @@
 /*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 15:12:02 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/08 15:12:02 by simon.lau        ###   ########.fr       */
+/*   Updated: 2026/07/08 21:31:19 by simon.lau        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ void	ft_putnbr_base(int nbr, char *base)
 	if (base_len == 0)
 	{
 		return ;
+	}
+	if (nbr < 0)
+	{
+		write(1, "-", 1);
+		nbr *= -1;
 	}
 	div = nbr / base_len;
 	mod = nbr % base_len;
