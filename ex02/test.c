@@ -1,11 +1,11 @@
 
 void	ft_putnbr(int nb);
 
-void	test_42(void)
+void	test_4231(void)
 {
 	int	nb;
 
-	nb = 4242;
+	nb = 4231;
 	ft_putnbr(nb);
 }
 
@@ -17,7 +17,7 @@ void	test_zero(void)
 	ft_putnbr(nb);
 }
 
-void	test_single_digit(void)
+void	test_single_7(void)
 {
 	int	nb;
 
@@ -25,7 +25,7 @@ void	test_single_digit(void)
 	ft_putnbr(nb);
 }
 
-void	test_negative(void)
+void	test_negative_4242(void)
 {
 	int	nb;
 
@@ -33,7 +33,7 @@ void	test_negative(void)
 	ft_putnbr(nb);
 }
 
-void	test_negative_single(void)
+void	test_negative_7(void)
 {
 	int	nb;
 
@@ -41,17 +41,24 @@ void	test_negative_single(void)
 	ft_putnbr(nb);
 }
 
+void	test_large_negative(void)
+{
+	ft_putnbr(-2147483648);
+}
+
 #include <stdio.h>
 
 int	main(void)
 {
-	test_42();
+	test_4231();
 	printf("%s", "\n");
 	test_zero();
 	printf("%s", "\n");
-	test_single_digit();
+	test_single_7();
 	printf("%s", "\n");
-	test_negative();
+	test_negative_4242();
 	printf("%s", "\n");
-	test_negative_single();
+	test_negative_7();
+	printf("%s", "\n");
+	test_large_negative();
 }

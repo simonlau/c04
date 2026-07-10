@@ -6,7 +6,7 @@
 /*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:02:15 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/10 12:39:40 by simon.lau        ###   ########.fr       */
+/*   Updated: 2026/07/10 14:17:14 by simon.lau        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ void	write_buffer_backwards(int *buffer, int count)
 	}
 }
 
+int	write_negative_and_flip_if_needed(int num)
+{
+	if (num < 0)
+	{
+		write(1, "-", 1);
+		return (-num);
+	}
+	return (num);
+}
+
 void	ft_putnbr(int nb)
 {
 	int	div;
@@ -42,15 +52,15 @@ void	ft_putnbr(int nb)
 	int	num_buffer[10];
 	int	count;
 
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 12);
+		return ;
+	}
+	nb = write_negative_and_flip_if_needed(nb);
 	div = nb / 10;
 	mod = nb % 10;
 	count = 0;
-	if (mod < 0)
-	{
-		write(1, "-", 1);
-		div = -div;
-		mod = -mod;
-	}
 	while (div != 0)
 	{
 		num_buffer[count] = mod;
