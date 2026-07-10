@@ -6,7 +6,7 @@
 /*   By: choolau <choolau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 15:12:02 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/10 09:12:16 by choolau          ###   ########.fr       */
+/*   Updated: 2026/07/10 09:14:47 by choolau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,6 @@ void	print_num(int num, char *base, int base_len)
 		write(1, &base[mod], 1);
 	}
 }
-
-#include <stdio.h>
 
 void	ft_putnbr_base(int nbr, char *base)
 {

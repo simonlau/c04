@@ -28,6 +28,7 @@ void	test_decimal(void)
 	ft_putnbr_base(2, "0123456789");
 	ft_putnbr_base(42, "0123456789");
 	ft_putnbr_base(142, "0123456789");
+	ft_putnbr_base(-142, "0123456789");
 	printf("%s", "\n");
 }
 
