@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
+/*   By: choolau <choolau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 15:12:02 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/08 21:31:19 by simon.lau        ###   ########.fr       */
+/*   Updated: 2026/07/10 09:12:16 by choolau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,33 @@ unsigned int	calc_base_length(char *base)
 	return (count);
 }
 
-void	print_converted_num(int num, char *base)
+void	print_num(int num, char *base, int base_len)
 {
-	if (num < 0 || num > 9)
+	int	div;
+	int	mod;
+
+	if (num < 0)
 	{
 		return ;
 	}
-	write(1, &base[num], 1);
+	if (num <= base_len)
+	{
+		write(1, &base[num], 1);
+	}
+	else
+	{
+		div = num / base_len;
+		mod = num % base_len;
+		print_num(div, base, base_len);
+		write(1, &base[mod], 1);
+	}
 }
+
+#include <stdio.h>
 
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int	base_len;
-	int	div;
-	int	mod;
 
 	base_len = calc_base_length(base);
 	if (base_len == 0)
@@ -76,14 +89,5 @@ void	ft_putnbr_base(int nbr, char *base)
 		write(1, "-", 1);
 		nbr *= -1;
 	}
-	div = nbr / base_len;
-	mod = nbr % base_len;
-	while (div > 0)
-	{
-		print_converted_num(div, base);
-		div = mod;
-		mod = div % base_len;
-		div = div / base_len;
-	}
-	print_converted_num(mod, base);
+	print_num(nbr, base, base_len);
 }
