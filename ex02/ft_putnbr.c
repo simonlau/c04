@@ -6,7 +6,7 @@
 /*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:02:15 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/08 21:03:16 by simon.lau        ###   ########.fr       */
+/*   Updated: 2026/07/10 12:39:40 by simon.lau        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ft_putnbr(int nb)
 	if (mod < 0)
 	{
 		write(1, "-", 1);
-		div *= -1;
-		mod *= -1;
+		div = -div;
+		mod = -mod;
 	}
 	while (div != 0)
 	{

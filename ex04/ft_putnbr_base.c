@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: choolau <choolau@student.42.fr>            +#+  +:+       +#+        */
+/*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 15:12:02 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/10 09:14:47 by choolau          ###   ########.fr       */
+/*   Updated: 2026/07/10 12:37:01 by simon.lau        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_putnbr_base(int nbr, char *base)
 	if (nbr < 0)
 	{
 		write(1, "-", 1);
-		nbr *= -1;
+		nbr = -nbr;
 	}
 	print_num(nbr, base, base_len);
 }

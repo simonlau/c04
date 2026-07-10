@@ -6,22 +6,17 @@
 /*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 15:41:27 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/08 20:59:32 by simon.lau        ###   ########.fr       */
+/*   Updated: 2026/07/10 12:38:48 by simon.lau        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <ctype.h>
 
 #define POSITIVE 0
 #define NEGATIVE -1
 #define TRUE 1
 #define FALSE 0
 
-int	is_not_valid_char(char c)
+int	is_valid_char(char c, char *allowed)
 {
-	char	*allowed;
-
-	allowed = "0123456789";
 	while (*allowed != '\0')
 	{
 		if (*allowed == c)
@@ -38,7 +33,7 @@ char	*move_pass_spaces(char *str)
 	char	*letter;
 
 	letter = str;
-	while (isspace(*letter))
+	while (is_valid_char(*letter, "\f\n\r \t\v"))
 	{
 		letter++;
 	}
@@ -50,6 +45,7 @@ int	ft_atoi(char *str)
 	int		result;
 	char	*str_ptr;
 	int		sign;
+	int		actual_digit;
 
 	result = 0;
 	sign = 1;
@@ -58,17 +54,18 @@ int	ft_atoi(char *str)
 	{
 		if (*str_ptr == '-')
 		{
-			sign *= -1;
+			sign = -sign;
 		}
 		str_ptr++;
 	}
 	while (*str_ptr != '\0')
 	{
-		if (is_not_valid_char(*str_ptr))
+		if (!is_valid_char(*str_ptr, "0123456789"))
 		{
 			return (result);
 		}
-		result = result * 10 + (*str_ptr - '0');
+		actual_digit = str_ptr - '0';
+		result = result * 10 + actual_digit;
 		str_ptr++;
 	}
 	return (result * sign);
