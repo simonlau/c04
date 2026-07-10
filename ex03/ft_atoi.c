@@ -6,7 +6,7 @@
 /*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 15:41:27 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/10 12:38:48 by simon.lau        ###   ########.fr       */
+/*   Updated: 2026/07/10 15:53:49 by simon.lau        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 #define TRUE 1
 #define FALSE 0
 
-int	is_valid_char(char c, char *allowed)
+int	is_char_in_str(char c, char *str)
 {
-	while (*allowed != '\0')
+	while (*str != '\0')
 	{
-		if (*allowed == c)
+		if (*str == c)
 		{
-			return (FALSE);
+			return (TRUE);
 		}
-		allowed++;
+		str++;
 	}
-	return (TRUE);
+	return (FALSE);
 }
 
 char	*move_pass_spaces(char *str)
@@ -33,7 +33,7 @@ char	*move_pass_spaces(char *str)
 	char	*letter;
 
 	letter = str;
-	while (is_valid_char(*letter, "\f\n\r \t\v"))
+	while (is_char_in_str(*letter, "\f\n\r \t\v"))
 	{
 		letter++;
 	}
@@ -45,7 +45,7 @@ int	ft_atoi(char *str)
 	int		result;
 	char	*str_ptr;
 	int		sign;
-	int		actual_digit;
+	char	actual_digit;
 
 	result = 0;
 	sign = 1;
@@ -60,11 +60,9 @@ int	ft_atoi(char *str)
 	}
 	while (*str_ptr != '\0')
 	{
-		if (!is_valid_char(*str_ptr, "0123456789"))
-		{
+		if (!is_char_in_str(*str_ptr, "0123456789"))
 			return (result);
-		}
-		actual_digit = str_ptr - '0';
+		actual_digit = *str_ptr - '0';
 		result = result * 10 + actual_digit;
 		str_ptr++;
 	}
