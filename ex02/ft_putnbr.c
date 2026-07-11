@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
+/*   By: choolau <choolau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:02:15 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/10 14:17:14 by simon.lau        ###   ########.fr       */
+/*   Updated: 2026/07/11 16:50:25 by choolau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,29 @@ int	write_negative_and_flip_if_needed(int num)
 
 void	ft_putnbr(int nb)
 {
-	int	div;
-	int	mod;
-	int	num_buffer[10];
-	int	count;
-
 	if (nb == -2147483648)
 	{
-		write(1, "-2147483648", 12);
+		write(1, "-2147483648", 11);
 		return ;
 	}
-	nb = write_negative_and_flip_if_needed(nb);
-	div = nb / 10;
-	mod = nb % 10;
-	count = 0;
-	while (div != 0)
+	if (nb < 0)
 	{
-		num_buffer[count] = mod;
-		mod = div % 10;
-		div /= 10;
-		count++;
+		write(1, "-", 1);
+		ft_putnbr(-nb);
+		return ;
 	}
-	num_buffer[count] = mod;
-	write_buffer_backwards(num_buffer, count);
+	if (nb / 10 == 0)
+	{
+		write_digit(nb % 10);
+		return ;
+	}
+	if (nb / 10 < 10)
+	{
+		write_digit(nb / 10);
+	}
+	else
+	{
+		ft_putnbr(nb / 10);
+	}
+	write_digit(nb % 10);
 }
