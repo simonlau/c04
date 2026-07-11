@@ -6,10 +6,11 @@
 /*   By: choolau <choolau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 09:02:15 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/11 16:50:25 by choolau          ###   ########.fr       */
+/*   Updated: 2026/07/11 17:04:16 by choolau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include <unistd.h>
 
 void	write_digit(int digit)
@@ -26,28 +27,9 @@ void	write_digit(int digit)
 	write(1, &num, 1);
 }
 
-void	write_buffer_backwards(int *buffer, int count)
-{
-	while (count > -1)
-	{
-		write_digit(buffer[count]);
-		count--;
-	}
-}
-
-int	write_negative_and_flip_if_needed(int num)
-{
-	if (num < 0)
-	{
-		write(1, "-", 1);
-		return (-num);
-	}
-	return (num);
-}
-
 void	ft_putnbr(int nb)
 {
-	if (nb == -2147483648)
+	if (nb == INT_MIN)
 	{
 		write(1, "-2147483648", 11);
 		return ;
@@ -55,19 +37,9 @@ void	ft_putnbr(int nb)
 	if (nb < 0)
 	{
 		write(1, "-", 1);
-		ft_putnbr(-nb);
-		return ;
+		nb = -nb;
 	}
-	if (nb / 10 == 0)
-	{
-		write_digit(nb % 10);
-		return ;
-	}
-	if (nb / 10 < 10)
-	{
-		write_digit(nb / 10);
-	}
-	else
+	if (nb >= 10)
 	{
 		ft_putnbr(nb / 10);
 	}
