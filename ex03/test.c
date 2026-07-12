@@ -13,6 +13,7 @@ void	test_42(void)
 void	test_spaces(void)
 {
 	assert(42 == ft_atoi("  42"));
+	assert(-42 == ft_atoi("\t-42"));
 }
 
 void	test_signs(void)
