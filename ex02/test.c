@@ -51,19 +51,19 @@ void	test_zero(void)
 	t_capture	c;
 
 	setup(&c);
-	ft_putnbr(0);
+	ft_putnbr(-0);
 	teardown(&c);
 	assert(strcmp("0", c.buf) == 0);
 }
 
-void	test_single_7(void)
+void	test_single_9(void)
 {
 	t_capture	c;
 
 	setup(&c);
-	ft_putnbr(7);
+	ft_putnbr(9);
 	teardown(&c);
-	assert(strcmp("7", c.buf) == 0);
+	assert(strcmp("9", c.buf) == 0);
 }
 
 void	test_negative_4242(void)
@@ -76,14 +76,14 @@ void	test_negative_4242(void)
 	assert(strcmp("-4242", c.buf) == 0);
 }
 
-void	test_negative_7(void)
+void	test_negative_9(void)
 {
 	t_capture	c;
 
 	setup(&c);
-	ft_putnbr(-7);
+	ft_putnbr(-9);
 	teardown(&c);
-	assert(strcmp("-7", c.buf) == 0);
+	assert(strcmp("-9", c.buf) == 0);
 }
 
 void	test_large_negative(void)
@@ -106,15 +106,26 @@ void	test_large(void)
 	assert(strcmp("2147483647", c.buf) == 0);
 }
 
+void	test_neg_100(void)
+{
+	t_capture	c;
+
+	setup(&c);
+	ft_putnbr(-100);
+	teardown(&c);
+	assert(strcmp("-100", c.buf) == 0);
+}
+
 #include <stdio.h>
 
 int	main(void)
 {
 	test_4231();
 	test_zero();
-	test_single_7();
+	test_single_9();
 	test_negative_4242();
-	test_negative_7();
+	test_negative_9();
 	test_large_negative();
 	test_large();
+	test_neg_100();
 }
