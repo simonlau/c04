@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -30,7 +31,7 @@ void	test_invalid_chars(void)
 
 void	test_large_negative(void)
 {
-	assert(-2147483648 == ft_atoi("-2147483648"));
+	assert(INT_MIN == ft_atoi("-2147483648"));
 }
 
 int	main(void)
