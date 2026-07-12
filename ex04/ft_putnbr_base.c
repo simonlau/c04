@@ -6,7 +6,7 @@
 /*   By: simon.lau <simon.lau@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 15:12:02 by simon.lau         #+#    #+#             */
-/*   Updated: 2026/07/10 12:37:01 by simon.lau        ###   ########.fr       */
+/*   Updated: 2026/07/12 09:25:32 by simon.lau        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ unsigned int	search_for_dup(char *str, char c)
 	return (FALSE);
 }
 
-unsigned int	calc_base_length(char *base)
+unsigned int	calc_valid_base_length(char *base)
 {
 	char	*current_search;
 	int		count;
@@ -60,7 +60,7 @@ void	print_num(int num, char *base, int base_len)
 	{
 		return ;
 	}
-	if (num <= base_len)
+	if (num < base_len)
 	{
 		write(1, &base[num], 1);
 	}
@@ -77,8 +77,8 @@ void	ft_putnbr_base(int nbr, char *base)
 {
 	int	base_len;
 
-	base_len = calc_base_length(base);
-	if (base_len == 0)
+	base_len = calc_valid_base_length(base);
+	if (base_len <= 1)
 	{
 		return ;
 	}
